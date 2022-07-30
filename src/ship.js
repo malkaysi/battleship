@@ -7,3 +7,9 @@
 // If a coordinate matches the ship, it's a hit
 // Once all the coordinates are hit, it's sunk
 // Coordinates cannot be clicked twice
+
+const createShip = (player, length, position) => {
+  return { player, length, position }
+};
+
+export default createShip;
