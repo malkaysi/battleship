@@ -1,15 +1,30 @@
-// Ship factory function
-// Object that should include length, where they've been hit, and whether they've sunk
+// When a user clicks on the gameboard position and it matches the ship position
+// That should be marked as a hit and change the color of the cell
+// The ship records that position as hit
 
-// They are placed on a gameboard that has coordinates
-// Coordinates are assigned to the ship based on its length
+const createShip = (length, position) => {
+  let health = length;
 
-// If a coordinate matches the ship, it's a hit
-// Once all the coordinates are hit, it's sunk
-// Coordinates cannot be clicked twice
+  const sinkShip = () => {
+    // Need to decide what to do here
+    // Send a message that your ship was sunk
+  };
 
-const createShip = (player, length, position) => {
-  return { player, length, position }
+  const hitShip = () => {
+    health -= 1;
+    if (health <= 0) {
+      sinkShip();
+    }
+  };
+
+  return {
+    get health() {
+      return health;
+    },
+    length,
+    position,
+    hitShip,
+  };
 };
 
 export default createShip;
