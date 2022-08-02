@@ -2,8 +2,9 @@
 // That should be marked as a hit and change the color of the cell
 // The ship records that position as hit
 
-const createShip = (length, position) => {
+const createShip = (length) => {
   let health = length;
+  let position;
 
   const sinkShip = () => {
     // Need to decide what to do here
@@ -17,12 +18,18 @@ const createShip = (length, position) => {
     }
   };
 
+  const assignPosition = (boardPosition) => {
+    position = boardPosition;
+  };
+
   return {
     get health() {
       return health;
     },
+    get position() {
+      return position;
+    },
     length,
-    position,
     hitShip,
   };
 };
