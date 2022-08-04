@@ -1,3 +1,5 @@
+import shipTypes from "./models";
+
 const gameBoard = () => {
   const createBoard = () => {
     // Creates the actual gameboard
@@ -9,15 +11,15 @@ const gameBoard = () => {
 
     const gridItem = document.createElement('div');
     let i = 0;
-    for (i = 0; i < 8; i += 1) {
-      gridItem.textContent = i;
-      grid.appendChild(gridItem);
+    for (i = 0; i < 100; i += 1) {
+      gridItem.setAttribute('id', i);
+      grid.appendChild(gridItem.cloneNode(true));
     }
 
     return grid;
   };
 
-  const placeShips = () => {
+  const placeShips = (type, length) => {
     // Take a ship as a parameter
     // Use the length of the ship to place it within the board boundaries
     // Pass the assigned coordinates as the position of the ship
@@ -25,7 +27,11 @@ const gameBoard = () => {
     // Within the boundary limits
   };
 
-  return createBoard;
+  shipTypes.map((shipType) => (
+    placeShips(shipType.type, shipType.length)
+  ));
+
+  return { createBoard };
 };
 
 export default gameBoard;
